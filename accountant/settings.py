@@ -122,13 +122,24 @@ WSGI_APPLICATION = 'accountant.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django_tenants.postgresql_backend',
+#         'NAME' : 'postgres',
+#         'HOST': 'localhost',
+#         'PASSWORD': '0710abdi',
+#         'PORT': '5434',
+#         'USER': 'postgres',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django_tenants.postgresql_backend',
-        'NAME' : 'postgres',
-        'HOST': 'localhost',
-        'PASSWORD': '0710abdi',
-        'PORT': '5434',
+        'NAME' : 'railway',
+        'HOST': 'containers-us-west-207.railway.app',
+        'PASSWORD': 'BWD93MX0A2FlLYX8y9Zu',
+        'PORT': '6295',
         'USER': 'postgres',
     }
 }
