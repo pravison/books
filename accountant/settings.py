@@ -122,16 +122,7 @@ WSGI_APPLICATION = 'accountant.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django_tenants.postgresql_backend',
-#         'NAME' : 'postgres',
-#         'HOST': 'localhost',
-#         'PASSWORD': '0710abdi',
-#         'PORT': '5434',
-#         'USER': 'postgres',
-#     }
-# }
+
 
 DATABASES = {
     'default': {
