@@ -4,7 +4,7 @@ from .models import Refferal
 from clients.models import Client
 from django.contrib.auth.decorators import login_required
 import uuid
-from users.serializers import UserSerializer
+#from users.serializers import UserSerializer
 from users.models import User
 #from django.contrib.auth.models import User
 #from rest_framework.response import Response
@@ -46,6 +46,7 @@ def SalesDashboard(request):
         refferal_code = sales_rep.refferal_code
         customers  = Client.objects.filter(refferal_code=refferal_code)
     else:
+        messages.error(request, 'You have to be one of our sales team to access the page!!!')
         return redirect('homepage')
     context = {'customers': customers, 'sales_rep': sales_rep}
     return render(request, 'sales_dashboard.html', context)

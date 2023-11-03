@@ -5,8 +5,8 @@ from django.db import models
 class Company(models.Model):
     hero_image = models.ImageField(blank=True)
     name = models.CharField(max_length=150)
-    pitch = models.CharField(max_length=250)
-    tagline = models.CharField(max_length=150)
+    pitch = models.TextField(max_length=250)
+    tagline = models.TextField(max_length=150)
 
     class Meta:
         verbose_name_plural = 'Company'

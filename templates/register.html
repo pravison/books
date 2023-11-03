@@ -12,7 +12,7 @@
 
             <div class="col-lg-12" style="align-items: center;">
 
-              <form method="POST" action={% url 'register' %} style=" padding: 10px 30px;" >
+              <form method="POST" action={% url 'registration' %} style=" padding: 10px 30px;" >
                 <header class="section-header">
                   <p >Register</p>
                 </header>
@@ -32,9 +32,13 @@
                 {% csrf_token %}
                 <div class="row gy-4">
                   
-                  <div class="col-md-4">
+                  <div class="col-md-8">
                     {{ form.name }}
                   </div>
+                  <div class="col-md-4">
+                    <input type="text" name="username" class="form-control" placeholder="Your username" required>
+                  </div>
+  
                   <div class="col-md-4">
                     {{ form.business_name }}
                   </div>
@@ -48,6 +52,10 @@
                   <div class="col-md-4">
                     {{ form.email }}
                   </div>
+                  <div class="col-md-4">
+                    <input type="text" name="password" class="form-control" placeholder="Your Password" required>
+                  </div>
+  
                   <div class="col-md-4">
                     {{form.refferal_code}}
                   </div>
