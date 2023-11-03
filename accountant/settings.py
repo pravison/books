@@ -207,6 +207,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SHOW_PUBLIC_IF_NO_TENANT_FOUND = True
 SECURE_PROXY_SSL_HEADER = ( 'HTTP_X_FORWARDED_PROTO', 'https')
 
-SUMMERNOTE_THEME = 'bs5'  # Show summernote with Bootstrap4
-#X_FRAME_OPTIONS = 'SAMEORIGIN'
+SUMMERNOTE_THEME = 'bs3'  # Show summernote with Bootstrap4
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+'iframe': True
 
