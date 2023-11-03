@@ -122,27 +122,27 @@ WSGI_APPLICATION = 'accountant.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django_tenants.postgresql_backend',
-#         'NAME' : 'postgres',
-#         'HOST': 'localhost',
-#         'PASSWORD': '0710abdi',
-#         'PORT': '5434',
-#         'USER': 'postgres',
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django_tenants.postgresql_backend',
-        'NAME' : 'railway',
-        'HOST': 'containers-us-west-207.railway.app',
-        'PASSWORD': 'BWD93MX0A2FlLYX8y9Zu',
-        'PORT': '6295',
+        'NAME' : 'postgres',
+        'HOST': 'localhost',
+        'PASSWORD': '0710abdi',
+        'PORT': '5434',
         'USER': 'postgres',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django_tenants.postgresql_backend',
+#         'NAME' : 'railway',
+#         'HOST': 'containers-us-west-207.railway.app',
+#         'PASSWORD': 'BWD93MX0A2FlLYX8y9Zu',
+#         'PORT': '6295',
+#         'USER': 'postgres',
+#     }
+# }
 
 DATABASE_ROUTERS = (
     'django_tenants.routers.TenantSyncRouter',
@@ -209,5 +209,4 @@ SECURE_PROXY_SSL_HEADER = ( 'HTTP_X_FORWARDED_PROTO', 'https')
 
 SUMMERNOTE_THEME = 'bs3'  # Show summernote with Bootstrap4
 X_FRAME_OPTIONS = 'SAMEORIGIN'
-'iframe': True
 
