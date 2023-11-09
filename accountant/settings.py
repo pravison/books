@@ -11,22 +11,26 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import environ
 import os
+
+env = environ.Env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+environ.Env.read_env(os.path.join(BASE_DIR, 'accountant/.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-^7%%q*c^8-b@_085^alh-85%yx8w1zm+3$)##^fz_gtf@n4c52'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.accountsmonitor.co.ke', '.vercel.app', 'localhost' , '*']
+ALLOWED_HOSTS = ['www.accountsmonitor.co.ke', '.accountsmonitor.co.ke', '.vercel.app', 'localhost' , '*']
 
 CORS_ORIGIN_ALLOW_ALL =True
 
@@ -89,6 +93,7 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    #'subdomains.middleware.SubdomainURLRoutingMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -122,16 +127,25 @@ WSGI_APPLICATION = 'accountant.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django_tenants.postgresql_backend',
+#         'NAME' : 'postgres',
+#         'HOST': 'localhost',
+#         'PASSWORD': '0710abdi',
+#         'PORT': '5434',
+#         'USER': 'postgres',
+#     }
+# }
 
 DATABASES = {
     'default': {
         'ENGINE': 'django_tenants.postgresql_backend',
-        'NAME' : 'railway',
-        'HOST': 'containers-us-west-207.railway.app',
-        'PASSWORD': 'BWD93MX0A2FlLYX8y9Zu',
-        'PORT': '6295',
-        'USER': 'postgres',
+        'NAME' : env('DATABASE_NAME'),
+        'HOST': env('DATABASE_HOST'),
+        'PASSWORD': env('DATABASE_PASS'),
+        'PORT': env('DATABASE_PORT'),
+        'USER': env('DATABASE_USER')
     }
 }
 
@@ -197,6 +211,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SHOW_PUBLIC_IF_NO_TENANT_FOUND = True
 SECURE_PROXY_SSL_HEADER = ( 'HTTP_X_FORWARDED_PROTO', 'https')
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
 
 SUMMERNOTE_THEME = 'bs3'  # Show summernote with Bootstrap4
 X_FRAME_OPTIONS = 'SAMEORIGIN'

@@ -36,14 +36,14 @@ def tenantRegistration(request):
             new_tenant.save()
 
             domain = Domain()
-            domain.domain = business_lower + '.localhost'
-            #domain.domain = business_lower + '.accountsmonitor.co.ke/'
+            #domain.domain = business_lower + '.localhost'
+            domain.domain = business_lower + '.accountsmonitor.co.ke/'
             domain.tenant = new_tenant
             domain.is_primary= True
             domain.save()
 
-            return redirect('http://localhost:3000/')
-            #return redirect('https://frontendaccountsmonitor.vercel.app/')
+            #return redirect('http://localhost:3000/')
+            return redirect('https://frontendaccountsmonitor.vercel.app/')
     else:
         form = TenantRegistrationForm()
     context = {

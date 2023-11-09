@@ -7,5 +7,11 @@
     "routes": [{
         "src":"/(.*)",
         "dest": "accountant/wsgi.py"
-    }]
+    }],
+    "rewrites":[
+        {
+            "source": "/*/ :path*",
+            "destination": "https://*.accountsmonitor.co.ke/:path*"
+        }
+    ]
 }
