@@ -8,10 +8,15 @@
         "src":"/(.*)",
         "dest": "accountant/wsgi.py"
     }],
-    "rewrites":[
+
+    "rewrites": [
         {
-            "source": "/*/ :path*",
-            "destination": "https://*.accountsmonitor.co.ke/:path*"
+            "source": "/:subdomain/:path*",
+            "destination": "/accountant/wsgi.py"
+        },
+        {
+            "source": "/(.*)",
+            "destination": "/accountant/wsgi.py"
         }
     ]
 }
