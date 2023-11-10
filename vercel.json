@@ -11,12 +11,8 @@
 
     "rewrites": [
         {
-            "source": "/:subdomain/:path*",
-            "destination": "/accountant/wsgi.py"
-        },
-        {
-            "source": "/(.*)",
-            "destination": "/accountant/wsgi.py"
+            "source": "/demo/:path*",
+            "destination": "https://demo.accountsmonitor.co.ke/:path*"
         }
     ]
 }
