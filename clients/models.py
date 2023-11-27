@@ -54,7 +54,7 @@ class Contact_us_Message(models.Model):
     
 class Invoice(models.Model):
     customer = models.ForeignKey(IntrestedClient, on_delete=models.CASCADE)
-    amount = models.FloatField(default=1500.0)
+    amount = models.FloatField(default=0.00)
     payment_code = models.CharField(max_length=100, blank=True, null=True)
     pending = models.BooleanField(default=True)
     paid = models.BooleanField(default=False)

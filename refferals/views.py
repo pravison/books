@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Refferal
-from clients.models import Client
+from clients.models import IntrestedClient, Invoice
 from django.contrib.auth.decorators import login_required
 import uuid
 #from users.serializers import UserSerializer
@@ -37,6 +37,7 @@ def SalesRep(request):
         return render(request, 'sale_rep.html')
 @login_required
 def SalesDashboard(request):
+    invoices = Invoice.objects.all()
     username= request.user.username
     try:
         sales_rep = Refferal.objects.get(username= username)
@@ -44,9 +45,9 @@ def SalesDashboard(request):
         sales_rep = None
     if sales_rep:
         refferal_code = sales_rep.refferal_code
-        customers  = Client.objects.filter(refferal_code=refferal_code)
+        customers  = IntrestedClient.objects.filter(refferal_code=refferal_code)
     else:
         messages.error(request, 'You have to be one of our sales team to access the page!!!')
-        return redirect('homepage')
-    context = {'customers': customers, 'sales_rep': sales_rep}
+        return redirect('homepage') #
+    context = {'customers': customers, 'sales_rep': sales_rep, 'invoices': invoices}
     return render(request, 'sales_dashboard.html', context)

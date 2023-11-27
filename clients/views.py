@@ -43,7 +43,7 @@ def tenantRegistration(request):
             domain.save()
 
             #return redirect('http://localhost:3000/')
-            return redirect('https://frontendaccountsmonitor.vercel.app/')
+            return redirect('https://frontend-accounts.vercel.app/')
     else:
         form = TenantRegistrationForm()
     context = {

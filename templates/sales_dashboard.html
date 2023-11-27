@@ -61,15 +61,22 @@
                     </tr>
                   </thead>
                   <tbody>
-                    {% for customer in customers %}
-                    <tr>
-                      <td>{{customer.created_on}}</td>
-                      <td>{{customer.business_name}}</td>
-                      <td>{{customer.refferal_code}}</td>
-                      <td>1500</td>
-                      <td>30%</td>
-                    </tr>
-                    {%endfor%}
+                    {% for invoice in invoices %}
+                      {% for customer in customers %}
+                      <tr>
+                        <td>{{customer.created_on}}</td>
+                        <td>{{customer.business_name}}</td>
+                        <td>{{customer.refferal_code}}</td>
+                        
+                          {% if invoice.customer.id == customer.id %}
+                          <td>{{invoice.amount}}</td>
+                          <td>{{invoice.paid}}</td>
+                          {% endif %}
+                        
+                        <td>30%</td>
+                      </tr>
+                      {%endfor%}
+                    {% endfor %}
                   </tbody>
                 </table>
                 {%else%}
