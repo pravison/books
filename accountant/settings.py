@@ -138,15 +138,26 @@ WSGI_APPLICATION = 'accountant.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django_tenants.postgresql_backend',
+#         'NAME' : env('DATABASE_NAME'),
+#         'HOST': env('DATABASE_HOST'),
+#         'PASSWORD': env('DATABASE_PASS'),
+#         'PORT': env('DATABASE_PORT'),
+#         'USER': env('DATABASE_USER')
+#     }
+# }
+
+import dj_database_url 
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django_tenants.postgresql_backend',
-        'NAME' : env('DATABASE_NAME'),
-        'HOST': env('DATABASE_HOST'),
-        'PASSWORD': env('DATABASE_PASS'),
-        'PORT': env('DATABASE_PORT'),
-        'USER': env('DATABASE_USER')
-    }
+    'default': dj_database_url.parse(
+        env('psql'),
+        conn_max_age=600,
+        conn_health_checks=True,
+        engine='django_tenants.postgresql_backend'
+    )
 }
 
 DATABASE_ROUTERS = (
@@ -197,8 +208,18 @@ MEDIA_URL = 'media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
 #turn on whitenoise storage backend
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# AWS_LOCATION = 'static'
 
-
+# AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
+# AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
+# AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
+# AWS_S3_SIGNATURE_NAME = 's3v4',
+# AWS_S3_REGION_NAME = env('AWS_S3_REGION_NAME')
+# AWS_S3_FILE_OVERWRITE = False
+# AWS_DEFAULT_ACL = None
+# AWS_S3_VERITY = True
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 #adding user model
 
