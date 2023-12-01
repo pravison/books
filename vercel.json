@@ -7,17 +7,6 @@
     "routes": [{
         "src":"/(.*)",
         "dest": "accountant/wsgi.py"
-    }],
+    }]
 
-
-    "rewrites": [
-        {
-            "source": "/:subdomain/:path*",
-            "destination": "/accountant/wsgi.py"
-        },
-        {
-            "source": "/(.*)",
-            "destination": "/accountant/wsgi.py"
-        }
-    ]
 }
